@@ -24,24 +24,17 @@ Search for Product
     Verify Item in Cart
     Verify in Cart
 
-Click on erbjudande
-    Click Link                xpath://*[@id="selenium--header-nav-link-erbjudanden"]
-
-Verify New Site
-    ${title_text}               Get Text        xpath://h1[class="Heading_h1__2S2dK Heading_black__cxcLS HorizontalBannerComponent_horizontal-banner-title__1yWUk HorizontalBannerComponent_horizontal-banner-title-fixed__3lZG7"]
-    Should Be Equal             "${title_text}"       "Erbjudanden"
-
 Enter Search Term
     [Arguments]                 ${search_term}
     Input text                  id:selenium--search-items-input     ${search_term}
 
 Submit Search
-    Click Button                Xpath://*[@id="__next"]/div/div[2]/div[1]/form/button
+    Press keys                  xpath://*[@id="selenium--search-items-input"]       RETURN
 
 Verify Search Completed
     [Arguments]                 ${search_term}
-    Wait Until Page Contains Element        Xpath://h1[@id="selenium--product-grid-header"]         timeout=20
-    ${actual_term}              Get Text    Xpath://h1[@id="selenium--product-grid-header"]
+    Wait Until Page Contains Element        Xpath://*[@id="selenium--product-grid-header"]
+    ${actual_term}              Get Text    Xpath://*[@id="selenium--product-grid-header"]
     Should Be Equal             "Sökord: ${search_term}"    "${actual_term}"
 
 Add to cart
@@ -58,6 +51,13 @@ Verify in Cart
     Should Be Equal             ${title_text}   Varukorg
     ${item_name}                Get Text        xpath://*[@id="selenium--cart"]/div/div[1]/div[7]/ax-product-list/md-list/md-list-item/div/div[2]/h3
     Should Be Equal             ${item_name}    Hallon Frysta
+
+Click on erbjudande
+    Click Element               xpath://*[@id="selenium--header-nav-link-erbjudanden"]
+
+Verify New Site
+    ${title_text}               Get Text        xpath://h1[@class="Heading_h1__2S2dK Heading_black__cxcLS HorizontalBannerComponent_horizontal-banner-title__1yWUk HorizontalBannerComponent_horizontal-banner-title-fixed__3lZG7"]
+    Should Be Equal             "${title_text}"       "Erbjudanden"
 
 End Web Test
     Close browser

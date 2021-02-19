@@ -33,5 +33,6 @@ User can search for kiwi, using Gherkin
 User can go to Erbjudanden
     [Documentation]             This is a test for navigation to Erbjudanden
     [Tags]                      Test 4
+    Go to Web Page
     Click on erbjudande
     Verify New Site
