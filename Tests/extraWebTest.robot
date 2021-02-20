@@ -11,6 +11,16 @@ ${URL}              https://www.willys.se/
 
 *** Test Cases ***
 
+
+User can go to Avalible Jobs
+    [Documentation]             This is a test for navigate to Willys Jobs
+    [Tags]                      Test 5
+    Go to Web Page
+    Click on Avalible Jobs
+
+
+*** ignore ***
+
 User can access website
     [Documentation]             This is some basic info about the test
     [Tags]                      Test 1
@@ -36,3 +46,4 @@ User can go to Erbjudanden
     Go to Web Page
     Click on erbjudande
     Verify New Site
+

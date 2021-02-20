@@ -29,7 +29,7 @@ Enter Search Term
     Input text                  id:selenium--search-items-input     ${search_term}
 
 Submit Search
-    Press keys                  xpath://*[@id="selenium--search-items-input"]       RETURN
+    Press keys                  Xpath://input[@id="selenium--search-items-input"]       RETURN
 
 Verify Search Completed
     [Arguments]                 ${search_term}
@@ -58,6 +58,17 @@ Click on erbjudande
 Verify New Site
     ${title_text}               Get Text        xpath://h1[@class="Heading_h1__2S2dK Heading_black__cxcLS HorizontalBannerComponent_horizontal-banner-title__1yWUk HorizontalBannerComponent_horizontal-banner-title-fixed__3lZG7"]
     Should Be Equal             "${title_text}"       "Erbjudanden"
+
+Click on Avalible Jobs
+    Click Element               xpath://*[@id="main-content"]/div[5]/footer/div/div[1]/footer-nav[1]/nav/ul/li[3]/ul/li[1]/a
+    Switch Window               NEW
+    ${link_text}                Get Title
+    Should Be Equal             ${link_text}    Willys Jobs
+    Click Element               class:paginationItemLast
+    ${current_value}            Get Text        xpath://*[@id="job-table"]/div[1]/div/div/ul/li[6]/a
+    Click Element               class:paginationItemLast
+    ${new_value}                Get Text        xpath://*[@id="job-table"]/div[1]/div/div/ul/li[6]/a
+    Should Be Equal             ${current_value}        ${new_value}
 
 End Web Test
     Close browser
